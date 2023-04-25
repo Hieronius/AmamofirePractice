@@ -6,15 +6,26 @@
 //
 
 import UIKit
+import Alamofire
 
 class MyTableViewController: UITableViewController {
     
-    var array = ["example"]
+    var array = [String]()
+    let url = "http://data.fixer.io/api/latest"
+    let key = "WdbIhL2RJUigoNgpKdH2fvOgpvUPXnlt"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // some code here
+        getPrice(url: "http://data.fixer.io/api/latest?access_key=WdbIhL2RJUigoNgpKdH2fvOgpvUPXnlt")
+        
+    }
+    
+    func getPrice(url: String) {
+        AF.request(url).responseJSON { response in
+            print(response)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
